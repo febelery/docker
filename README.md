@@ -20,6 +20,13 @@ This is the docker environment for PHP developers
 - param **YOUR-LOCAL-DIRECTORY**  eg`c:\www`
 
 
+## USE
+- Download `docker` or `docker for windows`
+- `Shared Drivers`
+- Config `Daemon` `Registry mirrors`  *eg:daocloud*
+- Enter this directory
+- `docker-compose up -d lnmp`
+- #####Please enjoy it
 
 ## SKILL ON WINDWOS
 ~~~
