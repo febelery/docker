@@ -5,7 +5,8 @@ MAINTAINER ross <ross@huaxi100.com>
 RUN sed -i 's/deb.debian.org/mirrors.aliyun.com/g' /etc/apt/sources.list \
     && apt-get update -y \
     && apt-get upgrade -y \
-    && docker-php-ext-install mysqli
+    && docker-php-ext-install mysqli \
+    && docker-php-ext-install pdo_mysql
 
 
 

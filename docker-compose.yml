@@ -60,7 +60,6 @@ services:
     volumes:
       - ./logs/nginx/:/var/log/nginx
       - ./nginx/ssl/:/etc/ssl
-      - ./nginx/conf.d/:/etc/nginx/sites-available
     ports:
       - "80:80"
       - "443:443"
