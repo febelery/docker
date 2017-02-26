@@ -29,15 +29,26 @@ This is the docker environment for PHP developers
 - #####Please enjoy it
 
 ## SKILL ON WINDWOS
+- quickly enter one container `DockerExec php-fpm`
 ~~~
 Function DockerExec($name){
     docker exec -it  $(docker ps | grep $name| awk '{print $1}')  /bin/bash
 }
 ~~~
+- use php composer
 ~~~
 Function composer {
     docker run --rm --interactive --tty  --volume ${PWD}:/app composer-china  composer $args
 }
 ~~~
+- git bash inside phpstrom
+    > File -> Settings -> Tools -> Terminal
+    
+    Put the following line in the Shell Path field (adjust as necessary for your platform):
+    > "C:\Program Files (x86)\Git\bin\sh.exe" -login -i
+    
+    If you are using the 64-bit version of Git, the path is different:
+    > "C:\Program Files\Git\bin\sh.exe" -login -i
+
 
 

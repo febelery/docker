@@ -21,7 +21,7 @@ services:
   drivers:
     image: tianon/true
     volumes:
-      - d:/www/:/var/www/html
+      - c:/www/:/var/www/html
 
 
   ######## php-fpm ########
