@@ -41,7 +41,7 @@ Function composer {
     docker run --rm --interactive --tty  --volume ${PWD}:/app composer-china  composer $args
 }
 ~~~
-- git bash inside phpstrom terminal
+- git bash inside phpstorm terminal
     > File -> Settings -> Tools -> Terminal
     
     Put the following line in the Shell Path field (adjust as necessary for your platform):
