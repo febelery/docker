@@ -28,7 +28,7 @@ This is the docker environment for PHP developers
 - `docker-compose up -d lnmp`
 - #####Please enjoy it
 
-## SKILL ON WINDWOS
+## SKILL ON WINDOWS
 - quickly enter some container `DockerExec php-fpm`
 ~~~
 Function DockerExec($name){
