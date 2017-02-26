@@ -29,7 +29,7 @@ This is the docker environment for PHP developers
 - #####Please enjoy it
 
 ## SKILL ON WINDWOS
-- quickly enter one container `DockerExec php-fpm`
+- quickly enter some container `DockerExec php-fpm`
 ~~~
 Function DockerExec($name){
     docker exec -it  $(docker ps | grep $name| awk '{print $1}')  /bin/bash
@@ -41,7 +41,7 @@ Function composer {
     docker run --rm --interactive --tty  --volume ${PWD}:/app composer-china  composer $args
 }
 ~~~
-- git bash inside phpstrom
+- git bash inside phpstrom terminal
     > File -> Settings -> Tools -> Terminal
     
     Put the following line in the Shell Path field (adjust as necessary for your platform):
