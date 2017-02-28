@@ -63,6 +63,10 @@ RUN if [ ${INSTALL_XDEBUG} = true ]; then \
     docker-php-ext-enable xdebug \
 ;fi
 
+# Copy xdebug configration for remote debugging
+COPY ./xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini
+
+
 RUN rm -r /var/lib/apt/lists/*
 
 CMD ["php-fpm"]
