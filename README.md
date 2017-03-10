@@ -7,6 +7,9 @@ This is the docker environment for PHP developers
 - redis
 - composer
 
+![basic img](https://raw.githubusercontent.com/yesterday679/docker/images/compose.png)
+![basic img](https://raw.githubusercontent.com/yesterday679/docker/images/composer.png)
+
 > from laradocker
 
 ## CONFIG
