@@ -11,7 +11,7 @@ This is the docker environment for PHP developers
 
 ![composer](https://raw.githubusercontent.com/yesterday679/docker/master/images/composer.png)
 
-![composer](https://raw.githubusercontent.com/yesterday679/docker/master/images/phpstrom.png)
+![phpstrom](https://raw.githubusercontent.com/yesterday679/docker/master/images/phpstrom.png)
 
 > from laradocker
 
