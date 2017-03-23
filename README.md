@@ -13,7 +13,7 @@ This is the docker environment for PHP developers
 
 ![phpstrom](https://raw.githubusercontent.com/yesterday679/docker/master/images/phpstrom.png)
 
-> from laradocker
+> from [laradocker](https://github.com/laradock/laradock)
 
 ## CONFIG
 - need modify file `docker-compose.yml` at line **25**
@@ -31,7 +31,6 @@ This is the docker environment for PHP developers
 - `Shared Drivers`
 - Config `Daemon` `Registry mirrors`  *eg:daocloud*
 - Enter this directory
-- `docker-compose up -d lnmp`
 - #####Please enjoy it
 
 ## SKILL ON WINDOWS
