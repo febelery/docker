@@ -1,6 +1,6 @@
 #############################################
 #   author:ross                             #
-#   mail:yesterday679@gmail.com               #
+#   mail:yesterday679@gmail.com             #
 #   time:2017/02/20                         #
 #   description:docker compose              #
 #############################################
@@ -24,6 +24,8 @@ services:
         - INSTALL_SWOOLE=true
         - INSTALL_REDIS=true
         - INSTALL_OPCACHE=true
+        - INSTALL_IMAGICK=true
+        - INSTALL_GD=true
         - INSTALL_MSGPACK=false
         - INSTALL_XDEBUG=true
         - INSTALL_SOAP=false
