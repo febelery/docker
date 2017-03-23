@@ -12,7 +12,7 @@ services:
   drivers:
     image: tianon/true
     volumes:
-      - D:/www/:/var/www/html
+      - c:/www/:/var/www/html
 
 
   ######## php-fpm ########
@@ -85,6 +85,14 @@ services:
       - redis:/data
     ports:
       - "6379:6379"
+
+  slate:
+    build:
+      context: ./slate
+    volumes:
+      - ./slate/source:/usr/src/app/source
+    ports:
+      - 4567:4567
 
 
 volumes:
