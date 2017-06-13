@@ -1,4 +1,4 @@
-FROM php:7.1.2-fpm
+FROM php:7.1.5-fpm
 
 MAINTAINER ross <ross@huaxi100.com>
 
@@ -98,4 +98,4 @@ RUN rm -r /var/lib/apt/lists/*
 
 CMD ["php-fpm"]
 
-EXPOSE 9000 9501
+EXPOSE 9000
