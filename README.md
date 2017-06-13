@@ -55,5 +55,11 @@ Function composer {
     If you are using the 64-bit version of Git, the path is different:
     > "C:\Program Files\Git\bin\sh.exe" -login -i
 
-
+## ALIAS
+```bash
+alias winpwd="pwd | sed 's/\/d/D:/' | sed 's/\/c/C:/'"
+alias composer="docker run --rm --interactive --tty  --volume `winpwd`:/app composer-china  composer $args"
+alias php_docker="docker exec -ti `docker ps | grep php-fpm | awk '{print $1}'` bash"
+alias python="docker run -it --rm --volume $(winpwd):/usr/src/app $(docker images | grep docker_python | awk '{print $3}') ipython $args"
+```
 
