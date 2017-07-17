@@ -21,6 +21,8 @@ services:
       context: ./php-fpm
       dockerfile: Dockerfile
       args:
+        - INSTALL_MYSQLI=true
+        - INSTALL_PDO_MYSQL=true
         - INSTALL_SWOOLE=true
         - INSTALL_REDIS=true
         - INSTALL_OPCACHE=true
