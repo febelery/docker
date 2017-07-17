@@ -1,4 +1,4 @@
-FROM php:7.1.5-fpm
+FROM php:7.1.7-fpm
 
 MAINTAINER ross <ross@huaxi100.com>
 
@@ -6,6 +6,7 @@ RUN sed -i 's/deb.debian.org/mirrors.aliyun.com/g' /etc/apt/sources.list \
     && sed -i 's/security.debian.org/mirrors.aliyun.com\/debian-security/g' /etc/apt/sources.list \
     && apt-get update -y \
     && apt-get upgrade -y \
+    && sh -c "echo 'Asia/Shanghai' > /etc/timezone" \
     && docker-php-ext-install mysqli \
     && docker-php-ext-install pdo_mysql
 
@@ -92,7 +93,7 @@ RUN if [ ${INSTALL_XDEBUG} = true ]; then \
 
 # Copy xdebug configration for remote debugging
 COPY ./xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini
-
+COPY ./php.ini /usr/local/etc/php/conf.d/php.ini
 
 RUN rm -r /var/lib/apt/lists/*
 
