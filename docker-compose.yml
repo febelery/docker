@@ -26,7 +26,7 @@ services:
         - INSTALL_SWOOLE=true
         - INSTALL_REDIS=true
         - INSTALL_OPCACHE=true
-        - INSTALL_IMAGICK=true
+        - INSTALL_IMAGICK=false
         - INSTALL_GD=true
         - INSTALL_MSGPACK=false
         - INSTALL_XDEBUG=true
@@ -42,7 +42,7 @@ services:
     expose:
       - "9000"
     environment:
-      XDEBUG_CONFIG: "remote_host=170.240.177.122"
+      XDEBUG_CONFIG: "remote_host=170.240.100.122"
       PHP_IDE_CONFIG: "serverName=yesterday679.com"
 
 
