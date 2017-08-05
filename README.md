@@ -24,14 +24,18 @@ This is the docker environment for PHP developers
   25     - YOUR-LOCAL-DIRECTORY:/var/www/html
 ~~~
 - param **YOUR-LOCAL-DIRECTORY**  eg`c:\www`
+- config nginx virtual host VIA domain
+    - add config file on `nginx/config`
+- use composer-china repository
+    - on dir `composer/`  use `docker build . -t composer-china`
 
 
-## USE
+## HOW TO USE
 - Download `docker` or `docker for windows`
 - `Shared Drivers`
 - Config `Daemon` `Registry mirrors`  *eg:daocloud*
 - Enter this directory
-- #####Please enjoy it
+
 
 ## SKILL ON WINDOWS
 - quickly enter some container `DockerExec php-fpm`
