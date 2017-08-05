@@ -1,4 +1,4 @@
-FROM php:7.1.5-fpm
+FROM php:7.1.8-fpm
 
 MAINTAINER ross <ross@huaxi100.com>
 
