@@ -65,5 +65,26 @@ alias winpwd="pwd | sed 's/\/d/D:/' | sed 's/\/c/C:/'"
 alias composer="docker run --rm --interactive --tty  --volume `winpwd`:/app composer-china  composer $args"
 alias php_docker="docker exec -ti `docker ps | grep php-fpm | awk '{print $1}'` bash"
 alias python="docker run -it --rm --volume $(winpwd):/usr/src/app $(docker images | grep docker_python | awk '{print $3}') ipython $args"
+alias cnpm="npm --registry=https://registry.npm.taobao.org --cache=$HOME/.npm/.cache/cnpm --disturl=https://npm.taobao.org/dist --userconfig=$HOME/.cnpmrc"
+alias wrk='docker run --rm williamyeh/wrk $args'
 ```
 
+## 使用 wrk 来测试 HTTP 性能
+- https://github.com/wg/wrk
+
+- Installation
+```
+docker pull williamyeh/wrk
+```
+
+- Show usage
+```docker
+docker run --rm williamyeh/wrk
+```
+
+- Script example
+```docker
+docker run --rm  -v `pwd`:/data  \
+      williamyeh/wrk  \
+      -s script.lua  http://www.google.com/
+```
