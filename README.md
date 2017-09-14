@@ -67,6 +67,7 @@ alias php_docker="docker exec -ti `docker ps | grep php-fpm | awk '{print $1}'` 
 alias python="docker run -it --rm --volume $(winpwd):/usr/src/app $(docker images | grep docker_python | awk '{print $3}') ipython $args"
 alias cnpm="npm --registry=https://registry.npm.taobao.org --cache=$HOME/.npm/.cache/cnpm --disturl=https://npm.taobao.org/dist --userconfig=$HOME/.cnpmrc"
 alias wrk='docker run --rm williamyeh/wrk $args'
+alias openresty="docker exec -ti `docker ps | grep openresty | awk '{print $1}'` openresty $args"
 ```
 
 ## 使用 wrk 来测试 HTTP 性能

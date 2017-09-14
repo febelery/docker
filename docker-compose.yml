@@ -89,6 +89,18 @@ services:
     ports:
       - "6379:6379"
 
+  ######## openresty ########
+  openresty:
+    build:
+      context: ./openresty
+    volumes_from:
+      - drivers
+    volumes:
+      - ./logs/openresty/:/var/log/nginx
+      - ./openresty/conf/:/usr/local/openresty/nginx/conf.d
+    ports:
+      - "8888:8888"
+
 
 volumes:
   mysql:
