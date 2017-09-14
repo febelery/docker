@@ -96,7 +96,7 @@ services:
     volumes_from:
       - drivers
     volumes:
-      - ./logs/openresty/:/var/log/nginx
+      - ./logs/openresty/:/usr/local/openresty/nginx/logs
       - ./openresty/conf/:/usr/local/openresty/nginx/conf.d
     ports:
       - "8888:8888"
