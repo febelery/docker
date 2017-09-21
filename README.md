@@ -6,6 +6,7 @@ This is the docker environment for PHP developers
 - mysql
 - redis
 - composer
+- openresty
 
 ![basic](https://raw.githubusercontent.com/yesterday679/docker/master/images/compose.png)
 

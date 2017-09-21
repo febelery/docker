@@ -1,4 +1,4 @@
-FROM php:7.1.8-fpm
+FROM php:7.1.9-fpm
 
 MAINTAINER ross <ross@huaxi100.com>
 
@@ -108,6 +108,18 @@ RUN if [ ${INSTALL_XDEBUG} = true ]; then \
     pecl install xdebug \
     && docker-php-ext-enable xdebug \
 ;fi
+
+
+#####################################
+# xDebug:
+#####################################
+
+ARG INSTALL_PCNTL=false
+RUN if [ ${INSTALL_PCNTL} = true ]; then \
+    docker-php-ext-install pcntl \
+    && docker-php-ext-enable pcntl \
+;fi
+
 
 # Copy xdebug configration for remote debugging
 COPY ./xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini
