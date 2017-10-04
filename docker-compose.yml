@@ -45,6 +45,8 @@ services:
     environment:
       XDEBUG_CONFIG: "remote_host=170.240.100.122"
       PHP_IDE_CONFIG: "serverName=yesterday679.com"
+    networks:
+      - backend
 
 
   ######## nginx ########
@@ -62,8 +64,11 @@ services:
     ports:
       - "80:80"
       - "443:443"
-    links:
+    depends_on:
       - php-fpm
+    networks:
+      - frontend
+      - backend
 
 
   ######## mysql ########
@@ -79,6 +84,8 @@ services:
       - mysql:/var/lib/mysql
     ports:
       - "3306:3306"
+    networks:
+      - backend
 
 
   ######## redis ########
@@ -89,6 +96,8 @@ services:
       - redis:/data
     ports:
       - "6379:6379"
+    networks:
+      - backend
 
   ######## openresty ########
   openresty:
@@ -103,6 +112,15 @@ services:
       - "8888:8888"
 
 
+### Networks Setup ############################################
+
+networks:
+  frontend:
+    driver: "bridge"
+  backend:
+    driver: "bridge"
+
+### Volumes Setup #############################################
 volumes:
   mysql:
     driver: "local"
