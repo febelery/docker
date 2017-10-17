@@ -1,11 +1,12 @@
 FROM fedora:latest
 
-MAINTAINER ross <ross@huaxi100.com>
+MAINTAINER yesterday679 <yesterday679@gmail.com>
 
 RUN dnf install dnf-plugins-core -y \
     && dnf config-manager --add-repo https://openresty.org/package/fedora/openresty.repo \
     && dnf install openresty -y \
     && dnf install openresty-resty -y \
+    && echo "alias luajit='/usr/local/openresty/luajit/bin/luajit'" >> ~/.bashrc \
     && rm /usr/local/openresty/nginx/conf/nginx.conf
 
 COPY nginx.conf /usr/local/openresty/nginx/conf/nginx.conf
