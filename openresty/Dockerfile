@@ -6,10 +6,13 @@ RUN dnf install dnf-plugins-core -y \
     && dnf config-manager --add-repo https://openresty.org/package/fedora/openresty.repo \
     && dnf install openresty -y \
     && dnf install openresty-resty -y \
+    && dnf install lua -y \
     && echo "alias luajit='/usr/local/openresty/luajit/bin/luajit'" >> ~/.bashrc \
     && rm /usr/local/openresty/nginx/conf/nginx.conf
 
 COPY nginx.conf /usr/local/openresty/nginx/conf/nginx.conf
+
+RUN rm -rf /var/cache/dnf/*
 
 EXPOSE 8888
 
