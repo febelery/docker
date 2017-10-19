@@ -110,6 +110,8 @@ services:
       - ./openresty/conf/:/usr/local/openresty/nginx/conf.d
     ports:
       - "8888:8888"
+    networks:
+      - backend
 
 
 ### Networks Setup ############################################
