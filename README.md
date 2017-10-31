@@ -1,4 +1,5 @@
 # docker
+
 ## What is this?
 This is the docker environment for PHP developers
 - php
@@ -89,4 +90,16 @@ docker run --rm williamyeh/wrk
 docker run --rm  -v `pwd`:/data  \
       williamyeh/wrk  \
       -s script.lua  http://www.google.com/
+```
+
+## Author
+```text
+  ,______,     ,_____,      ,______,     ,______,
+ / ,____, \   / ,___, \    / ,_____|    / ,_____|
+ | |    | |  / /     \ \  / /          / /
+ | |____| |  | |     | |  \ \_____,    \ \_____,
+ | ,_,  ,_/  | |     | |   \_____, \    \_____, \
+ | |  \ \    | |     | |          \ \          \ \
+ | |   \ \   \ \,___,/ /    ,_____/ /    ,_____/ /
+ |_|    \_\   \,_____,/    |______,/    |______,/
 ```

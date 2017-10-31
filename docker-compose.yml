@@ -112,6 +112,8 @@ services:
       - "8888:8888"
     networks:
       - backend
+    privileged: true
+
 
 
 ### Networks Setup ############################################
