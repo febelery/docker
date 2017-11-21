@@ -42,6 +42,8 @@ services:
       - drivers
     expose:
       - "9000"
+    ports:
+      - "9501:9501"
     environment:
       XDEBUG_CONFIG: "remote_host=170.240.100.122"
       PHP_IDE_CONFIG: "serverName=yesterday679.com"
