@@ -29,6 +29,7 @@ services:
         - INSTALL_PCNTL=true
         - INSTALL_IMAGICK=false
         - INSTALL_GD=true
+        - INSTALL_ZIP=true
         - INSTALL_MSGPACK=false
         - INSTALL_XDEBUG=true
         - INSTALL_SOAP=false

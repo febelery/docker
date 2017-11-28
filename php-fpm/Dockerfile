@@ -120,6 +120,15 @@ RUN if [ ${INSTALL_PCNTL} = true ]; then \
     && docker-php-ext-enable pcntl \
 ;fi
 
+#####################################
+# Zip: ZipArchive
+#####################################
+ARG INSTALL_ZIP=false
+RUN if [ ${INSTALL_ZIP} = true ]; then \
+    pecl install zip \
+    && docker-php-ext-enable zip \
+;fi
+
 
 # Copy xdebug configration for remote debugging
 COPY ./xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini
