@@ -47,6 +47,10 @@ Function DockerExec($name){
 }
 ~~~
 - use php composer
+~~~bash
+cd composer/ 
+docker build -t composer-china .
+~~~
 ~~~
 Function composer {
     docker run --rm --interactive --tty  --volume ${PWD}:/app composer-china  composer $args
@@ -72,7 +76,7 @@ alias wrk='docker run --rm williamyeh/wrk $args'
 alias openresty="docker exec -ti `docker ps | grep openresty | awk '{print $1}'` openresty $args"
 ```
 
-## 使用 wrk 来测试 HTTP 性能
+## USE WRK
 - https://github.com/wg/wrk
 
 - Installation
