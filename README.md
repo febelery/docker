@@ -8,6 +8,7 @@ This is the docker environment for PHP developers
 - redis
 - composer
 - openresty
+- slate
 
 ![basic](https://raw.githubusercontent.com/yesterday679/docker/master/images/compose.png)
 
@@ -95,6 +96,11 @@ docker run --rm  -v `pwd`:/data  \
       williamyeh/wrk  \
       -s script.lua  http://www.google.com/
 ```
+
+## USE Slate
+> https://github.com/lord/slate
+config enviorment `SLATE_SOURCE_PATH` from .env file
+http://localhost:4567
 
 ## Author
 ```text

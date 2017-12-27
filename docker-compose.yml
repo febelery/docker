@@ -117,6 +117,16 @@ services:
       - backend
     privileged: true
 
+  ######## slate ########
+  slate:
+    build:
+      context: ./slate
+      dockerfile: Dockerfile
+    volumes:
+      - ${SLATE_SOURCE_PATH}:/usr/src/slate/source
+    ports:
+      - "4567:4567"
+
 
 
 ### Networks Setup ############################################
