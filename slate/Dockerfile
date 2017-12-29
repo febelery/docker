@@ -6,8 +6,9 @@ RUN sed -i 's/deb.debian.org/mirrors.aliyun.com/g' /etc/apt/sources.list \
     && sed -i 's/security.debian.org/mirrors.aliyun.com\/debian-security/g' /etc/apt/sources.list \
     && apt-get update \
     && apt-get install -y nodejs \
-    && apt-get install -y git \
-    && git clone https://github.com/lord/slate.git /usr/src/slate \
+    && apt-get install -y git
+
+RUN git clone -b dev https://github.com/lord/slate.git /usr/src/slate \
     && cd /usr/src/slate \
     && bundle install \
     && apt-get remove git -y \
