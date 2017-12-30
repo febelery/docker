@@ -1,6 +1,6 @@
 FROM php:fpm
 
-MAINTAINER ross <ross@huaxi100.com>
+MAINTAINER ross <yesterday679@gmail.com>
 
 RUN sed -i 's/deb.debian.org/mirrors.aliyun.com/g' /etc/apt/sources.list \
     && sed -i 's/security.debian.org/mirrors.aliyun.com\/debian-security/g' /etc/apt/sources.list \

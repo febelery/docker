@@ -1,6 +1,6 @@
 FROM nginx:alpine
 
-MAINTAINER ross <ross@huaxi100.com>
+MAINTAINER ross <yesterday679@gmail.com>
 
 RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories \
     && apk update \

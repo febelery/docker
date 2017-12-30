@@ -1,6 +1,6 @@
 FROM mysql:5.7
 
-MAINTAINER ross <ross@huaxi100.com>
+MAINTAINER ross <yesterday679@gmail.com>
 
 ADD startup /etc/mysql/startup
 
