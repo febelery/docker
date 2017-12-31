@@ -5,8 +5,8 @@ MAINTAINER ross <yesterday679@gmail.com>
 RUN sed -i 's/deb.debian.org/mirrors.aliyun.com/g' /etc/apt/sources.list \
     && sed -i 's/security.debian.org/mirrors.aliyun.com\/debian-security/g' /etc/apt/sources.list \
     && apt-get update -y \
-    && apt-get upgrade -y \
-    && sh -c "echo 'Asia/Shanghai' > /etc/timezone" \
+    && apt-get install -y --no-install-recommends apt-utils \
+    && sh -c "echo 'Asia/Shanghai' > /etc/timezone"
 
 
 #####################################
@@ -53,29 +53,13 @@ RUN if [ ${INSTALL_REDIS} = true ]; then \
 
 
 #####################################
-# Opcache:
-#####################################
-ARG INSTALL_OPCACHE=false
-RUN if [ ${INSTALL_OPCACHE} = true ]; then \
-    docker-php-ext-install opcache \
-    && docker-php-ext-enable opcache \
-;fi
-
-
-#####################################
 # Gd: Gd library.
 #####################################
 ARG INSTALL_GD=false
 RUN if [ ${INSTALL_GD} = true ]; then \
-    apt-get install -y --no-install-recommends \
-        libpq-dev libzip-dev libicu-dev libfreetype6-dev \
-        libjpeg62-turbo-dev libpng12-dev libwebp-dev \
-    && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ \
-           --with-jpeg-dir=/usr/include/ \
-           --with-png-dir=/usr/include/ \
+    apt-get install -y libpng-dev \
     && docker-php-ext-install -j$(nproc) gd \
 ;fi
-
 
 
 #####################################
@@ -100,18 +84,27 @@ RUN if [ ${INSTALL_BCMATH} = true ]; then \
 
 
 #####################################
+# Opcache: 如果 Xdebug 扩展和 OPcache 一起使用，必须在 Xdebug 扩展之前加载 OPcache 扩展。
+#####################################
+ARG INSTALL_OPCACHE=false
+RUN if [ ${INSTALL_OPCACHE} = true ]; then \
+    docker-php-ext-install opcache \
+;fi
+
+#####################################
 # xDebug:
 #####################################
 
 ARG INSTALL_XDEBUG=false
+ARG PHP_XDEBUG_VERSION=xdebug
 RUN if [ ${INSTALL_XDEBUG} = true ]; then \
-    pecl install xdebug \
+    pecl install ${PHP_XDEBUG_VERSION} \
     && docker-php-ext-enable xdebug \
 ;fi
 
 
 #####################################
-# xDebug:
+# PCNTL:
 #####################################
 
 ARG INSTALL_PCNTL=false
@@ -125,17 +118,15 @@ RUN if [ ${INSTALL_PCNTL} = true ]; then \
 #####################################
 ARG INSTALL_ZIP=false
 RUN if [ ${INSTALL_ZIP} = true ]; then \
-    pecl install zip \
+    apt-get install libzip-dev -y \
+    && pecl install zip \
     && docker-php-ext-enable zip \
 ;fi
 
-
 # Copy xdebug configration for remote debugging
-COPY ./xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini
 COPY ./php.ini /usr/local/etc/php/conf.d/php.ini
 
-RUN rm -r /var/lib/apt/lists/*
+RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 CMD ["php-fpm"]
-
 EXPOSE 9000 9501
