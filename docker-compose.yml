@@ -42,13 +42,17 @@ services:
         - PHP_XDEBUG_VERSION=${PHP_XDEBUG_VERSION}
     volumes_from:
       - drivers
+    volumes:
+      - ./php-fpm/php.ini:/usr/local/etc/php/php.ini
     expose:
       - "9000"
     ports:
       - "9501:9501"
+    extra_hosts:
+      - "dockerhost:${DOCKER_HOST_IP}"
     environment:
-      XDEBUG_CONFIG: "remote_host=170.240.100.122"
-      PHP_IDE_CONFIG: "serverName=yesterday679.com"
+      XDEBUG_CONFIG: ${XDEBUG_CONFIG}
+      PHP_IDE_CONFIG: ${PHP_IDE_CONFIG}
     networks:
       - backend
 

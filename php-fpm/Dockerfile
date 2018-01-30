@@ -123,9 +123,6 @@ RUN if [ ${INSTALL_ZIP} = true ]; then \
     && docker-php-ext-enable zip \
 ;fi
 
-# Copy xdebug configration for remote debugging
-COPY ./php.ini /usr/local/etc/php/conf.d/php.ini
-
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 CMD ["php-fpm"]
