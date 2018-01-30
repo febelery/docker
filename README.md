@@ -68,7 +68,7 @@ Function composer {
 
 ## ALIAS
 ```bash
-alias winpwd="pwd | sed 's/\/d/D:/' | sed 's/\/c/C:/'"
+alias winpwd="pwd | sed 's/^\/d/D:/' | sed 's/^\/c/C:/'"
 alias composer="docker run --rm --interactive --tty  --volume `winpwd`:/app composer-china  composer $args"
 alias php_docker="docker exec -ti `docker ps | grep php-fpm | awk '{print $1}'` bash"
 alias python="docker run -it --rm --volume $(winpwd):/usr/src/app $(docker images | grep docker_python | awk '{print $3}') ipython $args"
@@ -77,7 +77,7 @@ alias wrk='docker run --rm williamyeh/wrk $args'
 alias openresty="docker exec -ti `docker ps | grep openresty | awk '{print $1}'` openresty $args"
 ```
 
-## USE WRK
+## WRK
 - https://github.com/wg/wrk
 
 - Installation
@@ -97,13 +97,16 @@ docker run --rm  -v `pwd`:/data  \
       -s script.lua  http://www.google.com/
 ```
 
-## USE Slate
+## Slate
 
-> https://github.com/lord/slate
-
-config enviorment `SLATE_SOURCE_PATH` from .env file
-
-http://localhost:4567
+- download [github](https://github.com/lord/slate)
+- copy directory {slate_github}/slate/source to ./slate/source
+    - or set `SLATE_SOURCE_PATH`  in .env file
+- check ./slate/source has index.html.md file and at least six directory
+- run `docker-compose up -d slate`
+- open http://localhost:4567 in brower
+ 
+enjoy it
 
 ## Author
 ```text

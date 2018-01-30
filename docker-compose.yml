@@ -12,7 +12,7 @@ services:
   drivers:
     image: tianon/true
     volumes:
-      - C:/www/:/var/www/html
+      - ${DRIVES_PATH}:/var/www/html
 
 
   ######## php-fpm ########
@@ -21,24 +21,25 @@ services:
       context: ./php-fpm
       dockerfile: Dockerfile
       args:
-        - INSTALL_MYSQLI=true
-        - INSTALL_PDO_MYSQL=true
-        - INSTALL_SWOOLE=true
-        - INSTALL_REDIS=true
-        - INSTALL_OPCACHE=true
-        - INSTALL_PCNTL=true
-        - INSTALL_IMAGICK=false
-        - INSTALL_GD=true
-        - INSTALL_ZIP=true
-        - INSTALL_MSGPACK=false
-        - INSTALL_XDEBUG=true
-        - INSTALL_SOAP=false
-        - INSTALL_MONGO=false
-        - INSTALL_ZIP_ARCHIVE=false
-        - INSTALL_BCMATH=true
-        - INSTALL_MEMCACHED=false
-        - INSTALL_XHPROF=false
-        - CODEIGNITER=false
+        - INSTALL_MYSQLI=${INSTALL_MYSQLI}
+        - INSTALL_PDO_MYSQL=${INSTALL_PDO_MYSQL}
+        - INSTALL_SWOOLE=${INSTALL_SWOOLE}
+        - INSTALL_REDIS=${INSTALL_REDIS}
+        - INSTALL_OPCACHE=${INSTALL_OPCACHE}
+        - INSTALL_PCNTL=${INSTALL_PCNTL}
+        - INSTALL_IMAGICK=${INSTALL_IMAGICK}
+        - INSTALL_GD=${INSTALL_GD}
+        - INSTALL_ZIP=${INSTALL_ZIP}
+        - INSTALL_MSGPACK=${INSTALL_MSGPACK}
+        - INSTALL_XDEBUG=${INSTALL_XDEBUG}
+        - INSTALL_SOAP=${INSTALL_SOAP}
+        - INSTALL_MONGO=${INSTALL_MONGO}
+        - INSTALL_ZIP_ARCHIVE=${INSTALL_ZIP_ARCHIVE}
+        - INSTALL_BCMATH=${INSTALL_BCMATH}
+        - INSTALL_MEMCACHED=${INSTALL_MEMCACHED}
+        - INSTALL_XHPROF=${INSTALL_XHPROF}
+        - CODEIGNITER=${CODEIGNITER}
+        - PHP_XDEBUG_VERSION=${PHP_XDEBUG_VERSION}
     volumes_from:
       - drivers
     expose:
