@@ -35,7 +35,7 @@ services:
         - INSTALL_SOAP=false
         - INSTALL_MONGO=false
         - INSTALL_ZIP_ARCHIVE=false
-        - INSTALL_BCMATH=false
+        - INSTALL_BCMATH=true
         - INSTALL_MEMCACHED=false
         - INSTALL_XHPROF=false
         - CODEIGNITER=false
