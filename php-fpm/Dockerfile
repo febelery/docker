@@ -114,6 +114,22 @@ RUN if [ ${INSTALL_PCNTL} = true ]; then \
 ;fi
 
 #####################################
+# XHPROF:
+#####################################
+
+ARG INSTALL_XHPROF=false
+RUN if [ ${INSTALL_XHPROF} = true ]; then \
+    apt-get install -y git \
+    && git https://github.com/longxinH/xhprof.git /tmp/xhprof \
+    && cd /tmp/xhprof/extension/ \
+    && phpize \
+    && ./configure && make && make install \
+    && docker-php-ext-enable xhprof \
+    && apt-get remove -y git \
+    && apt-get install graphviz -y \
+;fi
+
+#####################################
 # Zip: ZipArchive
 #####################################
 ARG INSTALL_ZIP=false
