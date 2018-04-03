@@ -1,6 +1,6 @@
 FROM mysql:latest
 
-MAINTAINER ross <yesterday679@gmail.com>
+MAINTAINER yesterday679 <yesterday679@gmail.com>
 
 ARG TZ=UTC
 ARG MYSQL_USER=user

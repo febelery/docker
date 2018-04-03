@@ -1,6 +1,6 @@
 FROM redis:latest
 
-MAINTAINER ross <yesterday679@gmail.com>
+MAINTAINER yesterday679 <yesterday679@gmail.com>
 
 EXPOSE 6379
 
