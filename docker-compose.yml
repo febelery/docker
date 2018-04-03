@@ -89,8 +89,8 @@ services:
           - MYSQL_PASSWORD=ross
           - MYSQL_ROOT_PASSWORD=root
     volumes:
-      #- mysql:/var/lib/mysql
-      - ${DATA_SAVE_PATH}/mysql:/var/lib/mysql
+      - mysql:/var/lib/mysql
+      #- ${DATA_SAVE_PATH}/mysql:/var/lib/mysql
     ports:
       - "3306:3306"
     networks:
@@ -102,8 +102,8 @@ services:
     build:
       context: ./redis
     volumes:
-      #- redis:/data
-      - ${DATA_SAVE_PATH}/redis:/data
+      - redis:/data
+      #- ${DATA_SAVE_PATH}/redis:/data
     ports:
       - "6379:6379"
     networks:
@@ -143,7 +143,8 @@ services:
     ports:
       - "27017:27017"
     volumes:
-      - ${DATA_SAVE_PATH}/mongo:/data/db
+      # - ${DATA_SAVE_PATH}/mongo:/data/db
+      - mongo:/data/db
     networks:
       - backend
 
@@ -161,4 +162,6 @@ volumes:
   mysql:
     driver: "local"
   redis:
+    driver: "local"
+  mongo:
     driver: "local"
