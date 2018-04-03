@@ -9,17 +9,13 @@ This is the docker environment for PHP developers
 - composer
 - openresty
 - slate
+- mongo
 
-![basic](https://raw.githubusercontent.com/yesterday679/docker/master/images/compose.png)
-
-![composer](https://raw.githubusercontent.com/yesterday679/docker/master/images/composer.png)
-
-![phpstrom](https://raw.githubusercontent.com/yesterday679/docker/master/images/phpstrom.png)
 
 > from [laradocker](https://github.com/laradock/laradock)
 
 ## CONFIG
-- need modify file `docker-compose.yml` at line **25**
+- modify file `docker-compose.yml` at line **25**
 ~~~
   22 drivers:
   23   image: tianon/true
@@ -69,7 +65,7 @@ Function composer {
 ## ALIAS
 ```bash
 alias winpwd="pwd | sed 's/^\/d/D:/' | sed 's/^\/c/C:/'"
-alias composer="docker run --rm --interactive --tty  --volume `winpwd`:/app composer-china  composer $args"
+alias composer="docker run --rm --interactive --tty  --volume `winpwd`:/app composer-china composer --ignore-platform-reqs --no-scripts $args"
 alias php_docker="docker exec -ti `docker ps | grep php-fpm | awk '{print $1}'` bash"
 alias python="docker run -it --rm --volume $(winpwd):/usr/src/app $(docker images | grep docker_python | awk '{print $3}') ipython $args"
 alias cnpm="npm --registry=https://registry.npm.taobao.org --cache=$HOME/.npm/.cache/cnpm --disturl=https://npm.taobao.org/dist --userconfig=$HOME/.cnpmrc"
