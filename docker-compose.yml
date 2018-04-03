@@ -89,7 +89,8 @@ services:
           - MYSQL_PASSWORD=ross
           - MYSQL_ROOT_PASSWORD=root
     volumes:
-      - mysql:/var/lib/mysql
+      #- mysql:/var/lib/mysql
+      - ${DATA_SAVE_PATH}/mysql:/var/lib/mysql
     ports:
       - "3306:3306"
     networks:
@@ -101,11 +102,13 @@ services:
     build:
       context: ./redis
     volumes:
-      - redis:/data
+      #- redis:/data
+      - ${DATA_SAVE_PATH}/redis:/data
     ports:
       - "6379:6379"
     networks:
       - backend
+
 
   ######## openresty ########
   openresty:
@@ -122,6 +125,7 @@ services:
       - backend
     privileged: true
 
+
   ######## slate ########
   slate:
     build:
@@ -132,6 +136,16 @@ services:
     ports:
       - "4567:4567"
 
+  ###### MongoDB Container ######
+
+  mongo:
+    build: ./mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - ${DATA_SAVE_PATH}/mongo:/data/db
+    networks:
+      - backend
 
 
 ### Networks Setup ############################################
