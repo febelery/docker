@@ -113,6 +113,7 @@ RUN if [ ${INSTALL_PCNTL} = true ]; then \
     && docker-php-ext-enable pcntl \
 ;fi
 
+
 #####################################
 # XHPROF:
 #####################################
@@ -129,6 +130,7 @@ RUN if [ ${INSTALL_XHPROF} = true ]; then \
     && apt-get install graphviz -y \
 ;fi
 
+
 #####################################
 # Zip: ZipArchive
 #####################################
@@ -137,6 +139,17 @@ RUN if [ ${INSTALL_ZIP} = true ]; then \
     apt-get install libzip-dev -y \
     && pecl install zip \
     && docker-php-ext-enable zip \
+;fi
+
+
+#####################################
+# MongoDB
+#####################################
+
+ARG INSTALL_MONGO=false
+RUN if [ ${INSTALL_MONGO} = true ]; then \
+    pecl install mongodb && \
+    docker-php-ext-enable mongodb \
 ;fi
 
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
