@@ -74,6 +74,7 @@ services:
       - "443:443"
     depends_on:
       - php-fpm
+      - mysql
     networks:
       - frontend
       - backend
