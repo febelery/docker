@@ -12,7 +12,6 @@ This is the docker environment for PHP developers
 - mongo
 
 
-> from [laradocker](https://github.com/laradock/laradock)
 
 ## CONFIG
 - modify file `docker-compose.yml` at line **25**
@@ -105,13 +104,4 @@ docker run --rm  -v `pwd`:/data  \
 enjoy it
 
 ## Author
-```text
-  ,______,     ,_____,      ,______,     ,______,
- / ,____, \   / ,___, \    / ,_____|    / ,_____|
- | |    | |  / /     \ \  / /          / /
- | |____| |  | |     | |  \ \_____,    \ \_____,
- | ,_,  ,_/  | |     | |   \_____, \    \_____, \
- | |  \ \    | |     | |          \ \          \ \
- | |   \ \   \ \,___,/ /    ,_____/ /    ,_____/ /
- |_|    \_\   \,_____,/    |______,/    |______,/
-```
+> Copy By [laradocker](https://github.com/laradock/laradock)

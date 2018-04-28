@@ -4,16 +4,9 @@
 #   time:2017/02/20                         #
 #   description:docker compose              #
 #############################################
-version: '2'
+version: '3'
 
 services:
-
-  ######## drivers ########
-  drivers:
-    image: tianon/true
-    volumes:
-      - ${DRIVES_PATH}:/var/www/html
-
 
   ######## php-fpm ########
   php-fpm:
@@ -40,10 +33,9 @@ services:
         - INSTALL_XHPROF=${INSTALL_XHPROF}
         - CODEIGNITER=${CODEIGNITER}
         - PHP_XDEBUG_VERSION=${PHP_XDEBUG_VERSION}
-    volumes_from:
-      - drivers
     volumes:
       - ./php-fpm/php.ini:/usr/local/etc/php/php.ini
+      - ${APP_CODE_PATH_HOST}:${APP_CODE_PATH_CONTAINER}
     expose:
       - "9000"
     ports:
@@ -63,12 +55,11 @@ services:
       context: ./nginx
       args:
         - PHP_UPSTREAM=php-fpm
-    volumes_from:
-      - drivers
     volumes:
       - ./logs/nginx/:/var/log/nginx
       - ./nginx/ssl/:/etc/ssl
       - ./nginx/config/:/etc/nginx/conf.d
+      - ${APP_CODE_PATH_HOST}:${APP_CODE_PATH_CONTAINER}
     ports:
       - "80:80"
       - "443:443"
@@ -91,7 +82,6 @@ services:
           - MYSQL_ROOT_PASSWORD=root
     volumes:
       - mysql:/var/lib/mysql
-      #- ${DATA_SAVE_PATH}/mysql:/var/lib/mysql
     ports:
       - "3306:3306"
     networks:
@@ -115,11 +105,10 @@ services:
   openresty:
     build:
       context: ./openresty
-    volumes_from:
-      - drivers
     volumes:
       - ./logs/openresty/:/usr/local/openresty/nginx/logs
       - ./openresty/conf/:/usr/local/openresty/nginx/conf.d
+      - ${APP_CODE_PATH_HOST}:${APP_CODE_PATH_CONTAINER}
     ports:
       - "8888:8888"
     networks:
@@ -154,15 +143,15 @@ services:
 
 networks:
   frontend:
-    driver: "bridge"
+    driver: ${NETWORKS_DRIVER}
   backend:
-    driver: "bridge"
+    driver: ${NETWORKS_DRIVER}
 
 ### Volumes Setup #############################################
 volumes:
   mysql:
-    driver: "local"
+    driver: ${VOLUMES_DRIVER}
   redis:
-    driver: "local"
+    driver: ${VOLUMES_DRIVER}
   mongo:
-    driver: "local"
+    driver: ${VOLUMES_DRIVER}
