@@ -19,14 +19,14 @@ This is the docker environment for PHP developers
 - Enter this directory
 
 
-## SKILL ON WINDOWS
-- quickly enter some container `DockerExec php-fpm`
+## SKILL
+- enter container `DockerExec php-fpm`
 ~~~
 Function DockerExec($name){
     docker exec -it  $(docker ps | grep $name| awk '{print $1}')  /bin/bash
 }
 ~~~
-- use php composer
+- composer
 ~~~bash
 cd composer/ 
 docker build -t composer-china .
