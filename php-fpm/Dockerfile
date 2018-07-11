@@ -3,7 +3,7 @@ FROM php:fpm
 MAINTAINER yesterday679 <yesterday679@gmail.com>
 
 RUN sed -i 's/deb.debian.org/mirrors.aliyun.com/g' /etc/apt/sources.list \
-    && sed -i 's/security.debian.org/mirrors.aliyun.com\/debian-security/g' /etc/apt/sources.list \
+    && sed -i 's/security.debian.org/mirrors.aliyun.com/g' /etc/apt/sources.list \
     && apt-get update -y \
     && apt-get install -y --no-install-recommends apt-utils \
     && sh -c "echo 'Asia/Shanghai' > /etc/timezone"
