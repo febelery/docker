@@ -12,22 +12,6 @@ This is the docker environment for PHP developers
 - mongo
 
 
-
-## CONFIG
-- modify file `docker-compose.yml` at line **25**
-~~~
-  22 drivers:
-  23   image: tianon/true
-  24   volumes:
-  25     - YOUR-LOCAL-DIRECTORY:/var/www/html
-~~~
-- param **YOUR-LOCAL-DIRECTORY**  eg`c:\www`
-- config nginx virtual host VIA domain
-    - add config file on `nginx/config`
-- use composer-china repository
-    - on dir `composer/`  use `docker build . -t composer-china`
-
-
 ## HOW TO USE
 - Download `docker` or `docker for windows`
 - `Shared Drivers`

@@ -152,6 +152,7 @@ RUN if [ ${INSTALL_MONGO} = true ]; then \
     docker-php-ext-enable mongodb \
 ;fi
 
+
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 CMD ["php-fpm"]
