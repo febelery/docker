@@ -127,7 +127,6 @@ services:
       - "4567:4567"
 
   ###### MongoDB Container ######
-
   mongo:
     build: ./mongo
     ports:
@@ -136,6 +135,25 @@ services:
       # - ${DATA_SAVE_PATH}/mongo:/data/db
       - mongo:/data/db
     networks:
+      - backend
+
+  ### ElasticSearch ##########
+  elasticsearch:
+    build: ./elasticsearch
+    volumes:
+      - elasticsearch:/usr/share/elasticsearch/data
+    environment:
+      - cluster.name=yesterday679
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms1024m -Xmx1024m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    ports:
+      - "9200:9200"
+    networks:
+      - frontend
       - backend
 
 
@@ -154,4 +172,6 @@ volumes:
   redis:
     driver: ${VOLUMES_DRIVER}
   mongo:
+    driver: ${VOLUMES_DRIVER}
+  elasticsearch:
     driver: ${VOLUMES_DRIVER}
